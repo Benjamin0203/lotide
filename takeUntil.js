@@ -1,14 +1,25 @@
 const takeUntil = (array, callback) => {
   let output = [];
   for (let item of array) {
-    if (!callback(item)) {
-      output.push(item);
-    } else {
-      break;
+    if (callback(item)) {
+      return output; //end the loop early
     }
+    output.push(item);
   }
   return output;
 };
+//Method 2
+// const takeUntil = (array, callback) => {
+//   let output = [];
+//   for (let item of array) {
+//     if (!callback(item)) {
+//       output.push(item);
+//     } else {
+//       break;
+//     }
+//   }
+//   return output;
+// };
 
 //AssertEqual
 const eqArrays = (arr1, arr2) => {

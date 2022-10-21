@@ -1,12 +1,29 @@
 const letterPositions = sentence => {
   const results = {};
-  sentence = sentence.replace(/\s/g, '');
-  for (let i = 0; i < sentence.length; i++) {
-    let ele = sentence[i];
-    results[ele] ? results[ele].push(i) : results[ele] = [i];
+  for (const i in sentence) {
+    const item = sentence[i];
+    if (item === ' ') {
+      continue;
+    }
+
+    if (!results[item]) {
+      results[item] = [];
+    }
+
+    results[item].push(Number(i));
   }
   return results;
 };
+//Method 2
+// const letterPositions = sentence => {
+//   const results = {};
+//   sentence = sentence.replace(/\s/g, '');
+//   for (let i = 0; i < sentence.length; i++) {
+//     let ele = sentence[i];
+//     results[ele] ? results[ele].push(i) : results[ele] = [i];
+//   }
+//   return results;
+// };
 
 // console.log(letterPositions("lighthouse in the house"));
 
