@@ -5,12 +5,21 @@ const eqArrays = (arr1, arr2) => {
     return false;
   }
   for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      return false;
+    const item1 = arr1[i];
+    const item2 = arr1[i];
+    if (item1 !== item2) {
+      if (Array.isArray(item1) || Array.isArray(item1)){
+        return eqArrays(arr1, arr2)
+      } else {
+        return false
+      }
     }
   }
   return true;
 };
+
+module.exports = eqArrays;
+
 
 console.log(eqArrays([1, 2, 3], [1, 2, 3]));
 assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
