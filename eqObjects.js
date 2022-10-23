@@ -1,5 +1,3 @@
-const assertEqual = (actual, expected) => actual === expected ? console.log(`^ O ^ Assertion Passed: ${actual} === ${expected}`) : console.log(`T _ T Assertion Failed: ${actual} !== ${expected}`);
-
 const eqArrays = (arr1, arr2) => {
   if (arr1.length !== arr2.length) {
     return false;
@@ -28,6 +26,8 @@ const eqObjects = (object1, object2) => {
       if (!eqArrays(value1, value2)) {
         return false;
       }
+    } else if (typeof(value1) === "object" || typeof(value2) === "object") {
+      return eqObjects(value1, value2);
     } else if (value1 !== value2) {
       return false;
     }
@@ -35,16 +35,4 @@ const eqObjects = (object1, object2) => {
   return true;
 };
 
-const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
-console.log(eqObjects(ab, ba));
-
-const abc = { a: "1", b: "2", c: "3" };
-console.log(eqObjects(ab, abc));
-
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-console.log(eqObjects(cd, dc)); // => true
-
-const cd2 = { c: "1", d: ["2", 3, 4] };
-console.log(eqObjects(cd, cd2));// => false
+module.exports = eqObjects;
