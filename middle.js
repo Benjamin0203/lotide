@@ -1,16 +1,4 @@
-const eqArrays = (arr1, arr2) => {
-  if (arr1.length !== arr2.length) {
-    return false;
-  }
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const assertArraysEqual = (actual, expected) => eqArrays(actual, expected) === true ? console.log(`^ O ^ Assertion Passed: ${actual} === ${expected}`) : console.log(`T _ T Assertion Failed: ${actual} !== ${expected}`);
+const assertArraysEqual = require("./assertArraysEqual");
 
 const middle = (arr) => {
   
@@ -29,6 +17,8 @@ const middle = (arr) => {
     }
   }
 };
+
+module.exports = middle;
 
 //Test
 console.log(middle([1, 2, 3, 4])); //[2, 3]
